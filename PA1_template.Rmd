@@ -31,8 +31,9 @@ hist(total_steps$total_steps,
 
 ```{r mean_and_median_of_steps_per_day, echo=TRUE}
 mm_data <- dat %>% group_by(date) %>% 
-  summarise(Mean = mean(steps, na.rm = TRUE),
-  Median = median(steps, na.rm = TRUE))
+  summarise(total = sum(steps)) %>% 
+  summarise(Mean = mean(total, na.rm = TRUE), 
+            Median = median(total, na.rm = TRUE))
 
 print(mm_data, quote = FALSE, row_names = FALSE, n = dim(mm_data)[1])
 ```
@@ -77,8 +78,9 @@ hist(total_steps$total_steps,
 
 ```{r mean_and_median_of_steps_per_day_without_missing_data, echo=TRUE}
 mm_data <- dat1 %>% group_by(date) %>% 
-  summarise(Mean = mean(steps, na.rm = TRUE),
-  Median = median(steps, na.rm = TRUE))
+  summarise(total = sum(steps)) %>% 
+  summarise(Mean = mean(total, na.rm = TRUE), 
+            Median = median(total, na.rm = TRUE))
 
 print(mm_data, quote = FALSE, row_names = FALSE, n = dim(mm_data)[1])
 ```
